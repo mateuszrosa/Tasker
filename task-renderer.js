@@ -1,12 +1,13 @@
 class TaskRenderer {
   constructor(list, repo) {
-    this.list = document.querySelector("ul");
+    this.list = document.querySelector(list);
     this.repo = repo;
   }
   render() {
-    this.repo.getAll().forEach((element) => {
+    const tasks = this.repo.getAll();
+    tasks.forEach((task) => {
       const newLi = document.createElement("li");
-      newLi.textContent = `${element.date} - ${element.text}`;
+      newLi.textContent = `${task.date} - ${task.text}`;
       this.list.append(newLi);
     });
   }
