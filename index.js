@@ -9,7 +9,7 @@ const btn = document.querySelector("button");
 const storage = new AppStorage();
 const mapper = new TaskMapper();
 const repository = new TaskRepository(storage);
-const renderer = new TaskRenderer("ul", repository.getAll());
+const renderer = new TaskRenderer("ul", repository);
 
 renderer.render(repository.getAll());
 

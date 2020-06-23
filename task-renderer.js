@@ -1,15 +1,17 @@
 class TaskRenderer {
-  constructor(list, tasks) {
+  constructor(list, repository) {
     this.list = document.querySelector(list);
-    this.tasks = tasks;
+    this.tasks = repository.getAll();
+    this.repo = repository;
   }
   render() {
     this.list.textContent = "";
     this.tasks.forEach((task) => {
+      const id = this.getId();
       const check = document.createElement("input");
       check.setAttribute("type", "checkbox");
       const newLi = document.createElement("li");
-      newLi.setAttribute("key", this.getId());
+      newLi.setAttribute("key", id);
       const newDiv = document.createElement("div");
       const newSpanTitle = document.createElement("span");
       const newBtn = document.createElement("button");
@@ -22,6 +24,7 @@ class TaskRenderer {
       newLi.append(check);
       newLi.append(newDiv);
       newLi.append(newBtn);
+      newBtn.addEventListener("click", () => this.repo.remove(id));
       this.list.append(newLi);
     });
   }
