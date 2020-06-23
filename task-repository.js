@@ -1,7 +1,8 @@
 class TaskRepository {
-  constructor() {
-    this.tasks = [{ date: "", text: "Dasda" }];
+  constructor(storage) {
+    this.tasks = storage.get("APP_TASKS") || [];
     this.subscribers = [];
+    this.storage = storage;
   }
 
   getAll() {
@@ -23,6 +24,7 @@ class TaskRepository {
   }
 
   onChange() {
+    this.storage.set("APP_TASKS", this.tasks);
     this.subscribers.forEach((s) => {
       s(this.tasks);
     });

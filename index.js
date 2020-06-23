@@ -1,17 +1,19 @@
 import TaskRepository from "./task-repository.js";
 import TaskRenderer from "./task-renderer.js";
 import TaskMapper from "./task-mapper.js";
+import AppStorage from "./app-storage.js";
 
 const form = document.querySelector("form");
 
+const storage = new AppStorage();
 const mapper = new TaskMapper();
-const repository = new TaskRepository();
+const repository = new TaskRepository(storage);
 const renderer = new TaskRenderer("ul", repository);
 
 renderer.render(repository.getAll());
 
-repository.subscribe(() => {
-  renderer.render();
+repository.subscribe((tasks) => {
+  renderer.render(tasks);
 });
 
 form.addEventListener("submit", (e) => {
