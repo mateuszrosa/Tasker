@@ -4,6 +4,7 @@ class TaskRenderer {
     this.repo = repo;
   }
   render() {
+    this.list.textContent = "";
     const tasks = this.repo.getAll();
     tasks.forEach((task) => {
       const newLi = document.createElement("li");

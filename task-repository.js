@@ -1,6 +1,6 @@
 class TaskRepository {
   constructor() {
-    this.tasks = [{ date: "01:12:2020", text: "Siema" }];
+    this.tasks = [{ date: "", text: "Dasda" }];
     this.subscribers = [];
   }
 
@@ -10,6 +10,7 @@ class TaskRepository {
 
   add(task) {
     this.tasks.push(task);
+    this.onChange();
   }
 
   remove(taskId) {
