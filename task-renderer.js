@@ -8,6 +8,7 @@ class TaskRenderer {
     this.repo.getAll().forEach((task) => {
       const check = document.createElement("input");
       check.setAttribute("type", "checkbox");
+      task.completed ? check.setAttribute("checked", "true") : null;
       const newLi = document.createElement("li");
       newLi.setAttribute("key", task.id);
       const newDiv = document.createElement("div");
@@ -23,6 +24,9 @@ class TaskRenderer {
       newLi.append(newDiv);
       newLi.append(newBtn);
       newBtn.addEventListener("click", () => this.repo.remove(task.id));
+      check.addEventListener("click", (e) =>
+        this.repo.updateCompleted(task.completed, task.id)
+      );
       this.list.append(newLi);
     });
   }

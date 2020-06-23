@@ -19,6 +19,12 @@ class TaskRepository {
     this.onChange();
   }
 
+  updateCompleted(completed, taskId) {
+    const task = this.tasks.find((task) => task.id === taskId);
+    task.completed = !completed;
+    this.onChange();
+  }
+
   subscribe(subscriber) {
     this.subscribers.push(subscriber);
   }
