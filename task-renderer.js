@@ -1,12 +1,11 @@
 class TaskRenderer {
   constructor(list, repository) {
     this.list = document.querySelector(list);
-    this.tasks = repository.getAll();
     this.repo = repository;
   }
   render() {
     this.list.textContent = "";
-    this.tasks.forEach((task) => {
+    this.repo.getAll().forEach((task) => {
       const check = document.createElement("input");
       check.setAttribute("type", "checkbox");
       const newLi = document.createElement("li");
