@@ -1,14 +1,15 @@
 class TaskRenderer {
-  constructor(list, repo) {
+  constructor(list, tasks) {
     this.list = document.querySelector(list);
-    this.repo = repo;
+    this.tasks = tasks;
   }
   render() {
-    this.list.textContent = "";
-    const tasks = this.repo.getAll();
-    tasks.forEach((task) => {
+    this.tasks.forEach((task) => {
+      const check = document.createElement("input");
+      check.setAttribute("type", "checkbox");
       const newLi = document.createElement("li");
       newLi.textContent = `${task.date} - ${task.text}`;
+      newLi.prepend(check);
       this.list.append(newLi);
     });
   }

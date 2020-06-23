@@ -8,7 +8,7 @@ const form = document.querySelector("form");
 const storage = new AppStorage();
 const mapper = new TaskMapper();
 const repository = new TaskRepository(storage);
-const renderer = new TaskRenderer("ul", repository);
+const renderer = new TaskRenderer("ul", repository.getAll());
 
 renderer.render(repository.getAll());
 
