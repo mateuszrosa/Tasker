@@ -15,6 +15,9 @@ class TaskRepository {
   }
 
   remove(taskId) {
+    this.tasks.forEach((task) => {
+      console.log(taskId === task.id);
+    });
     this.tasks = this.tasks.filter((t) => t.id !== taskId);
     this.onChange();
   }

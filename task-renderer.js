@@ -7,11 +7,10 @@ class TaskRenderer {
   render() {
     this.list.textContent = "";
     this.tasks.forEach((task) => {
-      const id = this.getId();
       const check = document.createElement("input");
       check.setAttribute("type", "checkbox");
       const newLi = document.createElement("li");
-      newLi.setAttribute("key", id);
+      newLi.setAttribute("key", task.id);
       const newDiv = document.createElement("div");
       const newSpanTitle = document.createElement("span");
       const newBtn = document.createElement("button");
@@ -24,12 +23,9 @@ class TaskRenderer {
       newLi.append(check);
       newLi.append(newDiv);
       newLi.append(newBtn);
-      newBtn.addEventListener("click", () => this.repo.remove(id));
+      newBtn.addEventListener("click", () => this.repo.remove(task.id));
       this.list.append(newLi);
     });
-  }
-  getId() {
-    return "_" + Math.random().toString(36).substr(2, 9);
   }
 }
 
