@@ -4,6 +4,7 @@ class TaskRenderer {
     this.tasks = tasks;
   }
   render() {
+    this.list.textContent = "";
     this.tasks.forEach((task) => {
       const check = document.createElement("input");
       check.setAttribute("type", "checkbox");
