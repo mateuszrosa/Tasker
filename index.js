@@ -4,6 +4,7 @@ import TaskMapper from "./task-mapper.js";
 import AppStorage from "./app-storage.js";
 
 const form = document.querySelector("form");
+const btn = document.querySelector("button");
 
 const storage = new AppStorage();
 const mapper = new TaskMapper();
