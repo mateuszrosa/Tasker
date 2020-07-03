@@ -13,9 +13,7 @@ const renderer = new TaskRenderer("ul", repository);
 
 renderer.render(repository.getAll());
 
-repository.subscribe((tasks) => {
-  renderer.render(tasks);
-});
+repository.subscribe(() => renderer.render());
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
